@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
+ALLOWED_HOST = os.getenv('ALLOWED_HOST')
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,7 +29,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['davehey.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = [ALLOWED_HOST, 'localhost']
 
 
 # Application definition
