@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>تصریف فارسی معاصر</title>
+</head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<style>
+body{
+    direction:  rtl;
+    font-family: Tahoma;
+    font-size: 14px;
+}
+.main {
+  margin: 0 auto;
+  padding: 5px;
+  margin: 5px auto;
+  width: 480px;
+
+}
+.container{
+    margin: 5px;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    padding: 5px;
+    background-color: white;
+    border: solid 5px #eee;
+    border-radius: 5px;
+}
+.result{
+    direction: rtl;
+    width: 345px;
+    height: 245px;
+    font-family: Tahoma;
+    font-size: 14px;
+    margin-right: 25px;
+    resize: none;
+}
+#word{
+    width: 240px;
+    font-family: Tahoma;
+    font-size: 14px;
+    margin-right: 13px;
+}
+.top-pan{
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.right-pan{
+    float: right;
+    width: 60px;
+    height: 250px;
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.allfsts{
+    float: right;
+    position: absolute;
+    bottom: 0;
+}
+
+.fstrows{
+    float: right;
+    margin: 0 auto;
+}
+
+input[type="radio"].but {
+    display: none;
+}
+
+label.but {
+    display: block;
+    float: left;
+    border: 1px solid black;
+    cursor: pointer;
+    font-family: Tahoma;
+    font-size: 14px;
+}
+
+label.but.active {
+    border: 1px solid blue;
+    font-family: Tahoma;
+    font-size: 14px;
+    color: white;
+}
+.fstlabel{
+    width: 50px;
+    float: 0;
+}
+.fstinput{
+    float: right;
+    padding: 5px;
+}
+.fstoutput {
+
+    text-align: center;
+    margin-bottom: 5px;
+}
+.outputlabel{
+    float: left;
+}
+#inflec{
+    font-family: Tahoma;
+    font-size: 14px;
+    width: 100px;
+}
+#word {
+    height: 23px;
+}
+.bot-pan{
+        position: relative;
+}
+.help-pan{
+    margin-right: 5px;
+
+    margin-left: 3px;
+    margin-top: 3px;
+    margin-bottom:1;
+    border: 2px solid #eee;
+    border-radius: 3px;
+}
+#showinfo{
+    width: 100%;
+    cursor: pointer;
+    color: #444;
+    background-color: #eee;
+    height: 20px;
+}
+.info{
+    display: none;
+    font-size: 12px;
+}
+</style>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="top-pan">
+                <div class="fstinput">
+                    کلمه ورودی:
+                </div>
+                <input type="text" name="word" id="word" class="">
+                <!--<a class="inflec" href="#" >تصریف کردن</a>-->
+                <button id="inflec" class="ui-button ui-widget ui-corner-all">تصریف کن</button>
+            </div>
+            <div class="bot-pan">
+                <div class="right-pan">
+                    <div class="outputlabel">
+                        <span>خروجی:</span>
+                    </div>
+                    <div class="allfsts">
+                        <div class="fstoutput">
+                            <span>مبدلها </span>
+                        </div>
+                        <div class="fstrows">
+                            <input type='radio' name='fsts' class='fst' value='1' id='1' checked>
+                                <label for="1" class="fstlabel">استاندارد</label>
+                            <input type='radio' name='fsts' class='fst' value='2' id='2'>
+                                <label for="2" class="fstlabel">همصدا</label>
+                            <input type='radio' name='fsts' class='fst' value='3' id='3'>
+                                <label for="3" class="fstlabel">آوایی</label>
+                            <input type='radio' name='fsts' class='fst' value='4' id='4'>
+                                <label for="4" class="fstlabel">بیانی</label>
+                            <input type='radio' name='fsts' class='fst' value='5' id='5'>
+                                <label for="5" class="fstlabel">تقطیع</label>
+                            <input type='radio' name='fsts' class='fst' value='6' id='6'>
+                                <label for="6" class="fstlabel">تولید</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <textarea class="result"></textarea>
+                </div>
+            </div>
+            <div class="help-pan">
+                <center>
+                    <div id="showinfo" class="">توضیحات بیشتر</div>
+                </center>
+                <div class="info">
+                    <table>
+                        <tr><td width="15%"><b>ف.ح.س</b></td><td width="32%">فعل مضارع (حال) ساده</td><td width="15%"><b>ف.م.س</b></td><td width="38%">فعل ماضی ساده</td></tr>
+                        <tr><td><b>ف.م.ن</b></td><td>فعل ماضی نقلی</td><td><b>ف.م.ا</b></td><td>فعل ماضی استمراری</td></tr>
+                        <tr><td><b>ف.م.ن.م</b></td><td>فعل ماضی نقلی مستمر</td><td><b>ف.ح.ا</b></td><td>فعل مضارع (حال) اخباری</td></tr>
+                        <tr><td><b>التزامی</b></td><td>مضارع التزامی</td><td><b>ف.م.ب</b></td><td>فعل ماضی بعید*</td></tr>
+                        <tr><td><b>ف.م.ال</b></td><td>فعل ماضی التزامی*</td><td><b>ف.م.ا.ب</b></td><td></td></tr>
+                        <tr><td><b>ف.آ</b></td><td>فعل مستقبل (آینده)*</td><td><b>اسمعام</b></td><td>اسم عام</td></tr>
+                        <tr><td><b>اسمجا</b></td><td>اسم خاص مکان</td><td><b>اسمشخ</b></td><td>اسم خاص شخص</td></tr>
+                        <tr><td><b>اسمفامیل</b></td><td>اسم خاص نام فامیلی</td><td><b>صمفعولی</b></td><td>صفت مفعولی</td></tr>
+                        <tr><td><b>شماره</b></td><td>صفت شمارشی</td><td><b>حضاف</b></td><td>حرف اضافه</td></tr>
+                        <tr><td><b>حضافگ</b></td><td>حرف اضافه گروهی</td><td><b>شخصی</b></td><td>ضمیر شخصی</td></tr>
+                        <tr><td><b>مشترک</b></td><td>ضمیر مشترک</td><td><b>مبهم</b></td><td>صفت یا ضمیر مبهم</td></tr>
+                        <tr><td><b>اشاره</b></td><td>صفت یا ضمیر اشاره</td><td><b>پرسش</b></td><td>صفت یا ضمیر پرسشی</td></tr>
+                        <tr><td><b>جملک</b></td><td>شبه جمله</td><td><b>حربط</b></td><td>حرف ربط</td></tr>
+                        <tr><td><b>حربطگ</b></td><td>حرف ربط گروهی</td><td><b>جا</b></td><td>تک‌واژ جمع غیر رسمی ا</td></tr>
+                        <tr><td><b>جها</b></td><td>تک‌واژ جمع ها</td><td><b>جان</b></td><td>تک‌واژ جمع جانداران</td></tr>
+                        <tr><td><b>جات</b></td><td>تک‌واژ جمع عربی ات</td><td><b>ججات</b></td><td>تک‌واژ جمع عربی جات</td></tr>
+                        <tr><td><b>جین</b></td><td>تک‌واژ جمع عربی ین</td><td><b>جون</b></td><td>تک‌واژ جمع عربی ون</td></tr>
+                        <tr><td><b>هم</b></td><td>تک‌واژ هم</td><td><b>را</b></td><td>تک‌واژ را (رو، و)</td></tr>
+                        <tr><td><b>عطف</b></td><td>تکواژ و واژه و</td><td><b>نم</b></td><td>تک‌واژ نکره یا موصولی</td></tr>
+                        <tr><td><b>موصولی</b></td><td>تک‌واژ موصولی</td><td><b>نکره</b></td><td>تک‌واژ نکره</td></tr>
+                        <tr><td><b>وشخصی</b></td><td>واژه‌بست شخصی</td><td><b>وربطی</b></td><td>واژه‌بست ربطی</td></tr>
+                        <tr><td><b>ربطویژه</b></td><td>واژه‌بست ربطی ویژه</td><td><b>معرفه</b></td><td>تک‌واژ معرفه</td></tr>
+                        <tr><td><b>تاکید</b></td><td>تک‌واژ تاکید ها و ا</td><td><b>اضافه</b></td><td>تک‌واژ کسره اضافه</td></tr>
+                        <tr><td><b>ش</b></td><td>شناسه ماضی و مضارع</td><td><b>ومفعولی</b></td><td>واژه‌بست مفعولی فعل متعدی</td></tr>
+                        <tr><td><b>ت</b></td><td>حرف واسط ت</td><td><b>وفاعلی</b></td><td>واژه‌بست فاعلی</td></tr>
+                        <tr><td><b>ف.و</b></td><td>فعل وجهی</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+    $( function() {
+            $( "input[name='fsts']" ).checkboxradio({
+                icon: false
+            });
+            //$(".inflec").button();
+            $('input[type="radio"], label').addClass('but');
+    });
+
+    $('#showinfo').click(function(){
+        $('.info').slideToggle();
+    });
+   
+    $('label').on('click', function() {
+        $('label').removeClass('active');
+        $(this).addClass('active');
+                
+    });
+    $('#inflec').click(function(){
+        get_infl();
+    });
+    $('#word').on('keypress', function(e){
+        if(e.which == 13) {
+            get_infl();
+        }
+    });
+    function get_infl(){
+        var afst;
+        var aword;
+        
+        if($("input:radio[name='fsts']:checked").prop('value') != null){
+            afst = $("input:radio[name='fsts']:checked").prop('value');
+        }
+        aword = $('#word').val();
+        console.log('aword '+aword+' '+afst);
+        $.ajax(
+        {
+            type:"GET",
+            url: "/inflection/",
+            data:{
+                word: aword,
+                fst: afst
+            },
+            success: function( data ) 
+            {
+                $( '.result' ).text(data);
+                $('#word').val("");
+            }
+         });
+    }
+    
+    </script>
+</body>
+</html>
