@@ -27,4 +27,4 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     url(r'^', include('farsi_infl.urls')),   # To make post app available at /
     #path("^favicon.png", RedirectView.as_view(url=staticfiles_storage.url("favicon.png"))),
-] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+]# + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
