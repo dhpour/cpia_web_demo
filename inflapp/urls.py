@@ -24,5 +24,5 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     #path('admin/', admin.site.urls),
     url(r'^', include('farsi_infl.urls')),   # To make post app available at /
-    path("images/favicon.png", RedirectView.as_view(url=staticfiles_storage.url("images/favicon.png"))),
+    path("favicon.png", RedirectView.as_view(url=staticfiles_storage.url("images/favicon.png"))),
 ]
