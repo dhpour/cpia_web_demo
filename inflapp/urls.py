@@ -20,9 +20,11 @@ from django.conf.urls import include, url
 from farsi_infl.views import index
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.views.generic.base import RedirectView
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
     url(r'^', include('farsi_infl.urls')),   # To make post app available at /
-    path("images/favicon.png", RedirectView.as_view(url=staticfiles_storage.url("static/images/favicon.png"))),
-]
+    #path("^favicon.png", RedirectView.as_view(url=staticfiles_storage.url("favicon.png"))),
+] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
