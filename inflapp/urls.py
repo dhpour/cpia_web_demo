@@ -18,8 +18,11 @@ from django.urls import path
 from django.contrib import admin
 from django.conf.urls import include, url
 from farsi_infl.views import index
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
     url(r'^', include('farsi_infl.urls')),   # To make post app available at /
+    path("favicon.png", RedirectView.as_view(url=staticfiles_storage.url("images/favicon.png"))),
 ]
