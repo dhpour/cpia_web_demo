@@ -42,6 +42,7 @@ def getInflection(request):
                 out += "🔹  " + abbr + " 👈 " + info[abbr] + "\n"
             
             inflection = '\n'.join(["🔹  " + x for x in inflection])
+            inflection = word + "\n\n" + inflection
             if fst == 1:
                 inflection += "\n\n" + out
 
