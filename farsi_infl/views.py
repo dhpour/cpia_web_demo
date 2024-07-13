@@ -4,10 +4,12 @@ from cpia import FarsiAnalyzer, Converter
 
 from django.http import HttpResponse
 from django.template import Context, loader
+import re
 
 farsi = FarsiAnalyzer()
 converter = Converter(farsi)
-        
+numbers_pattern = "۱۲۳۴۵۶۷۸۹۰"
+
 def index(request):
     template = loader.get_template("farsi_infl/index.html")
     return HttpResponse(template.render())
@@ -33,6 +35,7 @@ def getInflection(request):
             for l in inflection:
                 for x in l.split('='):
                     for y in x.split("+"):
+                        y = re.sub("[" + numbers_pattern + "]", "", y)
                         detail = farsi._parts_help.get(y, '')
                         if detail:
                             info[y] = detail
