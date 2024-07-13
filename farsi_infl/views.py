@@ -44,7 +44,7 @@ def getInflection(request):
             inflection = '\n'.join(["🔹  " + x for x in inflection])
             inflection = word + "\n\n" + inflection
             if fst == 1:
-                inflection += "\n\n" + out
+                inflection += "\n" + out
 
             return HttpResponse(inflection) # Sending an success response
         return HttpResponse("")
