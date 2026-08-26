@@ -113,6 +113,11 @@
             fill: var(--ink);
         }
 
+        .pipeline .node-label-mid {
+            font-weight: 600;
+            fill: #fff;
+        }
+
         .pipeline circle {
             fill: var(--surface);
             stroke: var(--accent);
@@ -443,7 +448,7 @@
             <circle class="node" cx="390" cy="35" r="24"></circle>
             <text x="390" y="39" text-anchor="middle" class="node-label">ورودی</text>
             <circle class="node mid" cx="210" cy="35" r="24"></circle>
-            <text x="210" y="39" text-anchor="middle" fill="#fff" font-weight="600">FST</text>
+            <text x="210" y="39" text-anchor="middle" class="node-label-mid">FST</text>
             <circle class="node" cx="30" cy="35" r="24"></circle>
             <text x="30" y="39" text-anchor="middle" class="node-label">خروجی</text>
         </svg>
